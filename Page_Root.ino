@@ -26,6 +26,12 @@ void handle_root()
             <br>
             <div class="cleanslate w24tz-current-time w24tz-middle" style="display: inline-block !important; visibility: hidden !important; min-width:300px !important; min-height:145px !important;"><p><a href="//24timezones.com/Kyiv/time" style="text-decoration: none" class="clock24" id="tz24-1703714886-c1367-eyJob3VydHlwZSI6IjEyIiwic2hvd2RhdGUiOiIxIiwic2hvd3NlY29uZHMiOiIxIiwiY29udGFpbmVyX2lkIjoiY2xvY2tfYmxvY2tfY2I2NThjYTA0NmVhNTg5IiwidHlwZSI6ImRiIiwibGFuZyI6ImVuIn0=" title="Kyiv local time" target="_blank" rel="nofollow">Current time in Kyiv</a></p><div id="clock_block_cb658ca046ea589"></div></div>
             <script type="text/javascript" src="//w.24timezones.com/l.js" async></script>
+            <br>
+            <iframe
+              title="Board performance"
+              width="308px"
+              height="200px"
+              src="/performance"></iframe>
 
             <h2>ESP01S Board Specifications</h2>
 

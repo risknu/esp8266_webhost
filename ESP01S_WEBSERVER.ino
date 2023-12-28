@@ -23,6 +23,7 @@ void setup()
 
   server.on("/", HTTP_GET, handle_root);
   server.on("/esp8266ex", HTTP_GET, handle_ESP8266EX);
+  server.on("/performance", HTTP_GET, handle_performance);
   server.on("/styles", HTTP_GET, handle_css);
 
   server.begin();
