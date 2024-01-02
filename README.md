@@ -1,3 +1,10 @@
+## riksnu{forked}
+
+`cpptoml` library github installer:
+```bash
+$ git clone https://github.com/skystrife/cpptoml.git
+```
+
 # ESP8266 Web Server/Site
 ## Setup arduino ide for esp8266
 - Go to File > Preferences
