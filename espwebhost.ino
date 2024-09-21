@@ -3,6 +3,26 @@
 
 #include "variables.hpp"
 
+#ifndef ew_cssid
+#define ew_cssid "..."
+#endif
+
+#ifndef ew_cpassword 
+#define ew_cpassword "..."
+#endif
+
+#ifndef _kw 
+#define _kw "hello_world"
+#endif
+
+#ifndef request_string_buffer
+#define request_string_buffer 2048
+#endif
+
+#ifndef all_page_buffer 
+#define all_page_buffer 4096
+#endif
+
 // define the web server port using ew_port, fallback to 80 if not defined
 #ifdef ew_port
 ESP8266WebServer server(ew_port);
@@ -36,6 +56,7 @@ static void handle_stats(void) {
 }
 
 static void handle_not_found(void) {
+    // if you want to add more features to 404 error page:
     // (server.method() == HTTP_GET) ? F("GET") : F("POST");
     // F("\nArguments: ") + String(server.args()) + F("\n");
     // F("URI: ") + server.uri() + F("\nMethod: ");

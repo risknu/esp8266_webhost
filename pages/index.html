@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>esp8266 hosted by risknu</title>
+        <script>
+            function _update_esp_stats() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var esp_json_stats = JSON.parse(this.responseText);
+
+                        document.getElementById('chip_id').innerHTML = esp_json_stats.chip_id; document.getElementById('flash_size').innerHTML = esp_json_stats.flash_size;
+                        document.getElementById('free_heap').innerHTML = esp_json_stats.free_heap; document.getElementById('wifi_signal').innerHTML = esp_json_stats.wifi_signal;
+                        document.getElementById('uptime').innerHTML = esp_json_stats.uptime;
+                    } else {
+                        document.getElementById('chip_id').innerHTML = '~'; document.getElementById('flash_size').innerHTML = '~';
+                        document.getElementById('free_heap').innerHTML = '~'; document.getElementById('wifi_signal').innerHTML = '~';
+                        document.getElementById('uptime').innerHTML = '~'; }};
+                xhr.open('GET', '/request_stats', true); xhr.send();
+            } setInterval(_update_esp_stats, 1000);
+        </script>
+    </head>
+    <body>
+        <style>
+            :root {
+                --color-white: #ffffff; --color-gray: #757575;
+                --color-black: #000000; --color-link: #ff55ff;
+            }
+            
+            * {
+                font-family: monospace; font-size: 11pt;
+                font-weight: 400; font-style: normal;
+                padding: 0px; margin: 0px;
+                box-sizing: border-box;
+                color: var(--color-white);
+            }html, body {
+                background-color: var(--color-gray);
+                width: 100%; height: 100%;
+                overflow-y: hidden; overflow-x: hidden;
+            }
+            
+            .container {
+                position: absolute; top: 50%; left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: var(--color-black);
+                width: 344px; padding: 12px;
+                box-shadow: 12px 13px 0px 0px #0000004f;
+            }.container-content {
+                outline: 2px solid var(--color-white); padding: 18px;
+            }.container-header {
+                position: absolute;
+                background-color: var(--color-black);
+                padding: 0px 12px; left: 50%; top: 1px;
+                transform: translate(-50%, 0px);
+            }
+            
+            .link {
+                color: var(--color-link); text-decoration: none;
+                -webkit-touch-callout: none; -webkit-user-select: none;
+                -khtml-user-select: none; -moz-user-select: none;
+                -ms-user-select: none; user-select: none;
+            }.copyright {
+                color: var(--color-gray);
+            }            
+        </style>
+        <div class='container'>
+            <h1 class='container-header'>esp8266 header</h1>
+            <div class='container-content'>
+                <p>Chip ID -> <span class='link' id='chip_id'></span></p>
+                <p>Flash Chip Size -> <span class='link' id='flash_size'></span></p>
+                <p>Free Heap -> <span class='link' id='free_heap'></span></p>
+                <p>WiFi Signal (RSSI) -> <span class='link' id='wifi_signal'></span></p>
+                <p>Uptime -> <span class='link' id='uptime'></span></p>
+                <span class='copyright'>copyright (c) risknu 2023-2024</span>
+            </div>
+        </div>
+        <script>_update_esp_stats();</script>
+    </body>
+</html>
